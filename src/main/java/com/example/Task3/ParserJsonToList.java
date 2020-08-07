@@ -37,7 +37,7 @@ public class ParserJsonToList {
         return result;
     }
 
-    private List<Employee> jsonToList(String json) {
+    public List<Employee> jsonToList(String json) {
         // Функция реализована согласно заданию
         //  но на больших объемах данных будет значительно проседать по производительсти
         List<Employee> result = new ArrayList<>();
@@ -52,7 +52,7 @@ public class ParserJsonToList {
         return result;
     }
 
-    private List<Employee> jsonToListNormal(String json) {
+    public List<Employee> jsonToListNormal(String json) {
         List<Employee> result = new ArrayList<>();
         Gson gson = new GsonBuilder().create();
         ArrayList<LinkedTreeMap> bufArr = gson.fromJson(json, ArrayList.class);

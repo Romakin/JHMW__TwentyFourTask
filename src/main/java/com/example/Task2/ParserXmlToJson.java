@@ -24,14 +24,14 @@ public class ParserXmlToJson extends AbstractParser {
     }
 
     public void doParse() {
-        saveToFile("./data2.json", parseXML());
+        saveToFile("./data2.json", parseXML("./data.xml"));
     }
 
-    public List<Employee> parseXML() {
+    public List<Employee> parseXML(String fPath) {
         List<Employee> list = new ArrayList<>();
         try {
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            Document document = builder.parse(new File("./data.xml"));
+            Document document = builder.parse(new File(fPath));
             XPath xPath = XPathFactory.newInstance().newXPath();
             NodeList nl = (NodeList) xPath.compile("/staff/employee").evaluate(document, XPathConstants.NODESET);
             for (int iEl = 0; iEl < nl.getLength(); iEl++) {
@@ -54,7 +54,8 @@ public class ParserXmlToJson extends AbstractParser {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            list = null;
         }
         return list;
     }
